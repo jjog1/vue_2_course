@@ -5,7 +5,7 @@
   <!-- 1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new setInterval tick (attach respective class to the div with id "effect" below) -->
   <div>
     <button @click="startEffect">Start Effect</button>
-    <div id="effect" :class="{shrinking: shrinking, highlight: highlighting}"></div>
+    <div id="effect" :class="effectClass"></div>
   </div>
   <!-- 2) Create a couple of CSS classes and attach them via the array syntax -->
   <div :class="['classOne', 'classTwo', 'classThree']">I got no class :(</div>

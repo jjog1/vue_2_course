@@ -1,8 +1,7 @@
 new Vue({
   el: '#exercise',
   data: {
-    shrinking: false,
-    highlighting: false,
+    effectClass: '',
     newClass: '',
     secondClass: '',
     booleanClass: '',
@@ -11,11 +10,10 @@ new Vue({
   },
   methods: {
     startEffect: function() {
-      shrinking = true;
+      this.effectClass = 'shrink';
       var vm = this;
       setInterval(function() {
-        vm.shrinking = !vm.shrinking;
-        vm.highlighting = !vm.highlighting;
+        vm.effectClass = vm.effectClass === 'shrink' ? 'highlight' : 'shrink';
       }, 3000)
     },
     startProgress: function() {
