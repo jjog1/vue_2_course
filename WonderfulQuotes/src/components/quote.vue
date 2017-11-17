@@ -1,5 +1,5 @@
 <template>
-    <p @click="deleteQuote">{{ quote.text }}</p>
+    <p @click="deleteQuote">{{ quote }}</p>
 </template>
 
 <script>
@@ -9,13 +9,13 @@
         },
         props: {
             'quote': {
-                type: Object,
+                type: String,
                 required: true
             }
         },
         methods: {
             deleteQuote() {
-                this.$emit('deleteQuote', this.quote.id);
+                this.$emit('deleteQuote', this.quote);
             }
         }
     }

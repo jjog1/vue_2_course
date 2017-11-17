@@ -2,15 +2,29 @@
     <div class="main-contents">
         <div class="contents">
             <p>Add a quote:</p>
-            <input class="quoteInputField" type="textarea"> {{ quoteText}} </input>
-            <button>Add Quote</button>
+            <input class="quoteInputField" type="textarea" v-model="quoteText"></input>
+            <button @click="addQuote">Add Quote</button>
         </div>    
     </div>  
 </template>
 
 <script>
+    import { bus } from '../main.js'
+
     export default {
-        props: ['quoteText']
+        data: () => {
+            return {
+                quoteText: ''
+            }
+        },
+        methods: {
+            addQuote() {
+                bus.$emit('new-quote', this.quoteText);
+            }
+        },
+        created() {
+            bus.$on('quotes-changed', () => {this.quoteText = '';});
+        }
     }
 </script>
 

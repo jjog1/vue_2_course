@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { bus } from '../main.js' 
 export default {
     data: () => {
         return {
@@ -15,6 +16,11 @@ export default {
                 width: '0%'
             }
         }
+    }, 
+    created() {
+        bus.$on('quotes-changed', (quotesLength) => {
+            this.progressStyle.width = quotesLength * 10 + '%';
+        })
     }
 }
 </script>
